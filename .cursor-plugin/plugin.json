@@ -2,9 +2,20 @@
   "name": "moreabout",
   "version": "1.0.0",
   "description": "Manage your More About creator link-in-bio page and schedule reels, Shorts, and photos across Instagram, Facebook, YouTube Shorts, X, and Threads with Social Queue.",
-  "author": { "name": "Brionic Security", "email": "support@moreabout.us" },
+  "author": {
+    "name": "Brionic Security",
+    "email": "support@moreabout.us"
+  },
   "homepage": "https://moreabout.us",
+  "repository": "https://github.com/brian0h3c/moreabout-plugin",
   "license": "MIT",
-  "keywords": ["social-media", "scheduler", "link-in-bio", "instagram", "youtube-shorts", "creators"],
+  "keywords": [
+    "social-media",
+    "scheduler",
+    "link-in-bio",
+    "instagram",
+    "youtube-shorts",
+    "creators"
+  ],
   "logo": "assets/logo.svg"
 }
