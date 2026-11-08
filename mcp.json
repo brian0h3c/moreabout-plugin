@@ -1,6 +1,7 @@
 {
   "mcpServers": {
     "moreabout": {
+      "type": "http",
       "url": "https://moreabout.us/mcp"
     }
   }
