@@ -1,6 +1,6 @@
 ---
 name: moreabout
-description: Manage a creator's More About link-in-bio page and stage or schedule photo and short-video posts in Social Queue (Instagram, Facebook, YouTube Shorts, X, Threads). Use when the user mentions More About, moreabout.us, their link-in-bio page, page links or blocks, or wants to post or schedule a reel, Short, or photo to their socials.
+description: Manage a creator's More About link-in-bio pages (one per brand on Diamond) and stage or schedule photo and short-video posts in Social Queue (Instagram, Facebook, YouTube Shorts, X, Threads). Use when the user mentions More About, moreabout.us, their link-in-bio page, page links or blocks, or wants to post or schedule a reel, Short, or photo to their socials.
 ---
 
 # More About
@@ -10,6 +10,10 @@ The `moreabout` MCP server acts on the signed-in creator's own page and Social Q
 ## Start here
 
 Call `get_my_profile` first. It tells you the handle, plan (Free, Gold or Diamond), how many page blocks and Social Queue slots are used, the creator's timezone, and which platforms are connected. Social Queue needs Gold or Diamond; on Free, say so and link the plan page it returns instead of trying.
+
+## Several pages
+
+One account can run several pages, for example a creator page plus one per business (Diamond: up to 10). `list_my_pages` shows them; every other tool takes an optional `page` handle and acts on the account's main page without it. When the user names a brand or business, find its handle with `list_my_pages` and pass it as `page`. `create_page` makes a new one (Diamond only); a page past what the plan covers is paused and can be read but not changed. Each page has its own connected social accounts, so check `list_connected_socials` for that page before posting.
 
 ## Page blocks
 

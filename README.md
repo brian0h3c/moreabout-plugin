@@ -1,8 +1,9 @@
 # More About for Cursor
 
-Manage your [More About](https://moreabout.us) link-in-bio page and line up posts in Social Queue from Cursor, Grok, Claude, ChatGPT, or any app that speaks the Model Context Protocol.
+Manage your [More About](https://moreabout.us) link-in-bio pages and line up posts in Social Queue from Cursor, Grok, Claude, ChatGPT, or any app that speaks the Model Context Protocol.
 
-- Add, edit, reorder and remove the links, section headers, music and videos on your page.
+- Run several brands from one account (Diamond: up to 10 pages) and tell the agent which one to work on.
+- Add, edit, reorder and remove the links, section headers, music and videos on each page.
 - Stage a photo or a vertical video and queue it for Instagram, Facebook, YouTube Shorts, X and Threads.
 - Posts an agent creates wait as drafts until you approve them in your dashboard, unless you ask it to schedule them outright.
 
@@ -28,6 +29,8 @@ Prefer a key? In More About go to **Account → AI agents**, create a personal A
 
 | Tool | What it does |
 | --- | --- |
+| `list_my_pages` | Every page the account runs, and how many the plan allows |
+| `create_page` | Add a page for another brand (Diamond) |
 | `get_my_profile` | Handle, page URL, plan, Social Queue slots, connected platforms |
 | `list_links` | Every block on your page, top to bottom |
 | `upsert_link` | Add or edit a link, header, music or video block |
@@ -40,18 +43,18 @@ Prefer a key? In More About go to **Account → AI agents**, create a personal A
 | `update_social_post` | Change caption, platforms, media or time, or approve a draft |
 | `cancel_social_post` | Delete a draft or cancel a scheduled post |
 
-Read-only tools are marked `readOnlyHint`; `delete_link` and `cancel_social_post` are marked `destructiveHint`.
+Every tool except `list_my_pages` and `create_page` takes an optional `page` handle; without it, it acts on the account's main page. Read-only tools are marked `readOnlyHint`; `delete_link` and `cancel_social_post` are marked `destructiveHint`.
 
 ## Plans
 
-Page tools work on every plan. Social Queue is part of Gold (10 queued posts) and Diamond (20). Drafts count toward the queue.
+Page tools work on every plan. Social Queue is part of Gold (10 queued posts) and Diamond (20 per page). Diamond also runs up to 10 pages from one account. Drafts count toward the queue.
 
 ## Privacy and terms
 
 - Privacy policy: https://moreabout.us/privacy
 - Terms of service: https://moreabout.us/terms
 
-The server only acts on the signed-in creator's own page. Brionic ID sign-ins are checked on every request and stop working within a minute of being revoked.
+The server only acts on the signed-in account's own pages. Brionic ID sign-ins are checked on every request and stop working within a minute of being revoked.
 
 ## For reviewers
 
@@ -62,6 +65,7 @@ The server only acts on the signed-in creator's own page. Brionic ID sign-ins ar
 5. Ask: "Move Portfolio to the bottom" and "Remove the Portfolio link."
 6. Social Queue needs a Gold or Diamond page with a connected social account. Ask: "Stage https://moreabout.us/assets/img/icon-512.png and draft an Instagram post for tomorrow at 9am saying hello." The post appears as a draft at https://moreabout.us/creator/socialq?tab=calendar&view=list&status=draft and does not publish until approved there.
 7. Ask: "Cancel that draft."
+8. On a Diamond account, ask: "Create a page called Test Cafe at handle testcafe-review, add a Menu link to it, then list my pages." Remove it afterwards under Creator → Pages.
 
 For a reviewer account with Social Queue enabled, email support@moreabout.us.
 

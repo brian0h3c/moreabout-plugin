@@ -1,7 +1,7 @@
 {
   "name": "moreabout",
-  "version": "1.0.0",
-  "description": "Manage your More About creator link-in-bio page and schedule reels, Shorts, and photos across Instagram, Facebook, YouTube Shorts, X, and Threads with Social Queue.",
+  "version": "1.1.0",
+  "description": "Manage your More About link-in-bio pages, one per brand, and schedule reels, Shorts and photos across Instagram, Facebook, YouTube Shorts, X and Threads with Social Queue.",
   "author": {
     "name": "Brionic Security",
     "email": "support@moreabout.us"
@@ -15,7 +15,9 @@
     "link-in-bio",
     "instagram",
     "youtube-shorts",
-    "creators"
+    "creators",
+    "multi-brand",
+    "small-business"
   ],
   "logo": "assets/logo.svg"
 }
