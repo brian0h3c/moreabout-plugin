@@ -1,8 +1,8 @@
 {
   "name": "moreabout",
   "displayName": "More About",
-  "version": "1.1.0",
-  "description": "Manage your More About link-in-bio page and draft Social Queue posts. Posts stay drafts until you explicitly approve them.",
+  "version": "1.1.1",
+  "description": "Manage your More About link-in-bio pages and draft Social Queue posts for X, Facebook Pages, and Instagram. You approve drafts in the dashboard.",
   "author": {
     "name": "Brionic Security",
     "email": "support@moreabout.us"
@@ -19,11 +19,7 @@
     "scheduler",
     "instagram",
     "facebook",
-    "youtube-shorts",
-    "linkedin",
-    "threads",
-    "bluesky",
-    "telegram",
+    "x",
     "mcp"
   ],
   "category": "integrations",
