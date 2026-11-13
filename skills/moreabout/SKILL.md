@@ -1,6 +1,6 @@
 ---
 name: moreabout
-description: Manage a creator's More About link-in-bio pages (one per brand on Diamond) and stage or schedule photo and short-video posts in Social Queue (Instagram, Facebook, YouTube Shorts, X, Threads). Use when the user mentions More About, moreabout.us, their link-in-bio page, page links or blocks, or wants to post or schedule a reel, Short, or photo to their socials.
+description: Manage a creator's More About link-in-bio pages (one per brand on Diamond): links and blocks, profile, look, social icons, photo gallery and 24-hour stories, click stats, and photo and short-video posts in Social Queue (Instagram, Facebook, YouTube Shorts, X, Threads). Use when the user mentions More About, moreabout.us, their link-in-bio page, its links, bio, look, gallery or stories, its stats, or wants to post or schedule a reel, Short, or photo to their socials.
 ---
 
 # More About
@@ -22,10 +22,26 @@ One account can run several pages, for example a creator page plus one per busin
 - `reorder_links` with every id sets the exact order. With only some ids, those swap among the slots they already hold and the rest stay put. To move one block, prefer `upsert_link` with `position`.
 - `delete_link` moves a block to Removed, where the creator can restore it. Confirm with the user before deleting.
 
+## Profile, look and icons
+
+- `update_profile` changes the display name, bio, or profile photo (stage the photo with `upload_media`, then pass `avatar_media_id`). The handle can only be changed in the dashboard.
+- `update_appearance` changes the accent color, font, header style, button shape, name style, avatar style, and background: an animated or HD video backdrop (`background`), or a staged photo (`background_image_media_id`). Pass only what should change; `get_my_profile` shows the current look.
+- `list_links` also returns `social_icons`, the row of profile icons at the top of the page. `upsert_social_icon` adds or edits one (the URL must be on that platform's site), `delete_social_icon` removes one. Icons count toward the page's block limit.
+
+## Gallery and stories
+
+- `list_gallery` shows the permanent gallery (up to 5 photos or videos of up to 30 seconds) and live stories (vanish 24 hours after posting).
+- `add_gallery_item` with `where: "gallery"` or `"story"` and a staged `media_id`. A story is public right away; confirm before posting one.
+- `remove_gallery_item` deletes a `photo:N` or `story:N` and its file for good. Confirm first.
+
+## Stats
+
+`get_analytics` returns clicks on the page's blocks and icons (all time and per day for 30 days), top referrers, and Social Queue results (published, failed, success rate, per platform). Page views are not tracked.
+
 ## Posting to socials
 
 1. `list_connected_socials` to see which platforms are connected and what each accepts. Only post to connected platforms. YouTube Shorts takes videos only.
-2. Stage the file with `upload_media`. One photo or one vertical video (up to 59 seconds) per post.
+2. Stage the file with `upload_media` (the same staging works for profile photos, backgrounds and the gallery). One photo or one vertical video (up to 59 seconds) per post.
    - Public file on the web: `action: "import_url"` with an https `source_url`.
    - Local file: `action: "init_upload"`, then PUT the raw bytes to the returned `upload_url` (for example `curl -T reel.mp4 "<upload_url>"`). Never paste file contents into a tool call.
    - Check progress with `action: "status"`.
@@ -42,6 +58,8 @@ Drafts and scheduled posts both take a queue slot until they publish or are canc
 - `list_social_queue` with an optional `status` (`draft`, `scheduled`, `published`, `failed`, `canceled`).
 - `update_social_post` changes caption, platforms, media, time, or mode. `mode: "scheduled"` approves a draft (only when the user asked); `mode: "draft"` holds a scheduled post back.
 - `cancel_social_post` deletes a draft, or cancels a scheduled post and keeps it in history. Confirm first.
+- `publish_social_post_now` sends a draft, scheduled, failed or canceled post out within a minute. Only when the user asked for it to go out now; platforms it already reached are skipped.
+- `delete_social_post` removes a post from the queue entirely (not from the platforms it reached). Confirm first.
 
 ## Errors
 

@@ -4,6 +4,8 @@ Manage your [More About](https://moreabout.us) link-in-bio pages and line up pos
 
 - Run several brands from one account (Diamond: up to 10 pages) and tell the agent which one to work on.
 - Add, edit, reorder and remove the links, section headers, music and videos on each page.
+- Update the bio and profile photo, restyle the page, manage social icons, the photo gallery and 24-hour stories.
+- See which links and icons get clicked, and how posts are landing on each platform.
 - Stage a photo or a vertical video and queue it for Instagram, Facebook, YouTube Shorts, X and Threads.
 - Posts an agent creates wait as drafts until you approve them in your dashboard, unless you ask it to schedule them outright.
 
@@ -25,14 +27,16 @@ The first time a tool is used, Cursor opens a Brionic ID sign-in. You choose whe
 
 Prefer a key? In More About go to **Account → AI agents**, create a personal API key, and send it as `Authorization: Bearer ma_live_…`.
 
+Using Grok? In Grok Build run `grok mcp add --transport http moreabout https://moreabout.us/mcp`. With the xAI API, add a remote MCP tool with `server_url` `https://moreabout.us/mcp` and your API key as `authorization`.
+
 ## Tools
 
 | Tool | What it does |
 | --- | --- |
 | `list_my_pages` | Every page the account runs, and how many the plan allows |
 | `create_page` | Add a page for another brand (Diamond) |
-| `get_my_profile` | Handle, page URL, plan, Social Queue slots, connected platforms |
-| `list_links` | Every block on your page, top to bottom |
+| `get_my_profile` | Handle, bio, look, page URL, plan, Social Queue slots, connected platforms |
+| `list_links` | Every block on your page, top to bottom, plus its social icons |
 | `upsert_link` | Add or edit a link, header, music or video block |
 | `reorder_links` | Set the order of blocks |
 | `delete_link` | Remove a block (restorable from the dashboard) |
@@ -42,8 +46,18 @@ Prefer a key? In More About go to **Account → AI agents**, create a personal A
 | `schedule_social_post` | Queue a post as a draft (default) or scheduled |
 | `update_social_post` | Change caption, platforms, media or time, or approve a draft |
 | `cancel_social_post` | Delete a draft or cancel a scheduled post |
+| `publish_social_post_now` | Send a post out right away |
+| `delete_social_post` | Remove a post from the queue |
+| `update_profile` | Display name, bio and profile photo |
+| `update_appearance` | Accent color, font, layout, backdrop or background photo |
+| `upsert_social_icon` | Add or edit an icon in the row at the top of the page |
+| `delete_social_icon` | Remove a social icon (restorable) |
+| `list_gallery` | Gallery photos and live stories |
+| `add_gallery_item` | Add a gallery photo or video, or post a 24-hour story |
+| `remove_gallery_item` | Delete a gallery item or story |
+| `get_analytics` | Clicks, top referrers and Social Queue results |
 
-Every tool except `list_my_pages` and `create_page` takes an optional `page` handle; without it, it acts on the account's main page. Read-only tools are marked `readOnlyHint`; `delete_link` and `cancel_social_post` are marked `destructiveHint`.
+Every tool except `list_my_pages` and `create_page` takes an optional `page` handle; without it, it acts on the account's main page. Read-only tools are marked `readOnlyHint`; the tools that delete something are marked `destructiveHint`.
 
 ## Plans
 
